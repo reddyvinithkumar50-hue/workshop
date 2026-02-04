@@ -9,3 +9,11 @@ model = nn.Sequential(
 
 X=torch.tensor([[0.,0.],[0.,1.],[1.,0.],[1.,1.]])
 y=torch.tensor([[0.],[1.],[1.],[0.]])
+
+for _ in range(1000):
+  opt.zero_grad()
+  loss = loss_fn(model(X), y)
+  loss.backward()
+  opt.step()
+
+print(f"Final loss: {loss.item():.4f}")
